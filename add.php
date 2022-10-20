@@ -1,4 +1,4 @@
-<?PHP require (/app/add.code.php); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,3 +38,4 @@
     </div>
 </body>
 </html>
+<?PHP include ('app/add.code.php'); ?>
