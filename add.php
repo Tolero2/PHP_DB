@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <form method="POST">
+        <form method="POST" action="app/add.code.php">
             <div class="form-group">
                 <label for="first-name">First Name</label>
                 <input type="text" 
@@ -38,4 +38,4 @@
     </div>
 </body>
 </html>
-<?PHP include ('app/add.code.php'); ?>
+<!?PHP include (); ?>

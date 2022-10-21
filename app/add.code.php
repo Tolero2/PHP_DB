@@ -3,9 +3,9 @@
 //     return;
 // }
 
-$firstName = filter_input(INPUT_POST,'first-name');// ,htmlspecialchars(string 'first-name'));
-$lastName = filter_input(INPUT_POST,'last-name');//, htmlspecialchars(string 'last-name'));
-$email = filter_input(INPUT_POST,'email');//, htmlspecialchars('string'));
+$firstName = filter_input(INPUT_POST, 'first-name');//htmlspecialchars('first-name'));// ,htmlspecialchars(string 'first-name'));
+$lastName = filter_input(INPUT_POST, 'last-name');//htmlspecialchars('last-name')); //, htmlspecialchars(string 'last-name'));
+$email = filter_input(INPUT_POST, 'email');//htmlspecialchars('email'));//, htmlspecialchars('string'));
 
 if (strlen($email) === 0){
     $email= NULL;
@@ -24,10 +24,15 @@ $sql_add= NULL;
 $stmt = NULL;
 
 
-
-
 // foreach($filters as $key=>$name){
 //     echo (filter_id($name) ."    ".$name."\n");
 // }
 
 //print_r ($filters);
+?>
+<!DOCTYPE html>
+<html>
+    <body>
+        <a href= "/PHP_DB/add.php">Return</a>
+    </body>
+</html>
