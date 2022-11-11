@@ -6,6 +6,19 @@ $password = 'MYSQLp@ssword';
 
 $pdo = new PDO($dsn, $user, $password);
 
+function sql($pdo,$firstName,$lastName ,$email){
+    $sql_add= ' INSERT INTO People(`firstName`,`lastName`,`email`) VALUES (:fName, :lName, :eName);';
+    $stmt= $pdo->prepare($sql_add);
+    $stmt->execute([
+        ':fName'=> $firstName ,
+        ':lName'=> $lastName,
+        ":eName"=> $email
+    ]);
+    
+    $pdo= null;
+    $stmt = null;
+    
+    }
 
 // $statement = $pdo->prepare('SELECT COUNT(*) FROM Players WHERE firstName LIKE :fName');
 

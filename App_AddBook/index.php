@@ -1,0 +1,43 @@
+<?php require 'index.code.php'?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Name Record List</title>
+</head>
+<body>
+   <table class="table">
+    <thead>
+        <tr>
+            <th> LAST NAME FIRST NAME</th>
+            <th> Email</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach($model as $records)://{
+    //       echo "<tr>
+    //     <td>" .$records['lastName']."</td>
+    //     <td>".$records['firstName']."</td>
+    //    </tr>";
+    //     endforeach;
+       ?>
+       <tr>
+        <!-- <td><!?= $records['LAST NAME']," ", $records['FIRST NAME']; ?></td> -->
+        <td>
+        <a href="Edit.php?recId=<?=$records["id"]?>">
+            <?= $records['LAST NAME'];?>,<?= $records['FIRST NAME']; ?>
+        </a>
+    </td>
+
+        <td><?= $records['email']; ?></td>
+        
+       </tr>
+         <?php endforeach; ?>  
+
+    </tbody>
+   </table>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<?php
+
+class tolero{
+    public array $name;
+    public  $age;
+    //public $com;
+
+    /*CONSTRUCTOR & DESTRUCTOR*/
+
+    //Construct is used in a class to instantiate an object items(values)
+    // it is called when an object is created ie $variable = new class(value, $value) 
+    public function __construct($name ,$age){
+        echo 'this is under '. __CLASS__. " class\n"; // MAGIC CONSTANT for getting the class name of the current class
+        $this->name = $name;
+        $this->age = $age;
+        //$this->com = $dd;
+        //printf("%d -this is what we have: %s\n %s", $this->age , $this->name, $this->com);    
+    }
+
+    // Destruct is called in a class when there are no object to reference againe
+    // This is good for ending and closing connection in Databases and cleanup etc.
+    public function __destruct()
+    {
+       while(1===1) { echo 'I ran oo';
+        break;
+       } return;
+    }
+
+    public function sayHello(){
+       // foreach($this->name  as $gma ){
+        // echo $gma." Says Hello and their age is: \n";
+        // }
+        $arraylist = array_combine($this->name, $this->age); // use ARRAY COMBINE to turn two different list of array into $Key=>$value (and). Useful for putting two arguments into a foreach loop.
+        foreach($arraylist  as $name => $age ){
+                echo $name." Says Hello and their age is: ".$age."\n";
+                }
+        echo "\n";
+        //Alternatively, a for loop can be used to read and display an array of items
+        $counter = sizeof($this->name);
+        for($i= 0;$i<$counter; $i++){
+            echo $this->name[$i]." Says Hello and their age is: ".$this->age[$i]."\n";
+        }
+    }
+
+    // Destruct is called in a class when there are no object to reference againe
+    // This is good for ending and closing connection in Databases and cleanup etc.
+}
+// Instansiating an ARRAY object
+$usersname= array ('Adelola','Adeloere','andde','wkdf','sndmwk','dkfl');
+$userage = array(23,25,28,56,36,24);
+
+$user1= new tolero($usersname, $userage);
+//echo $user1->age + 56;
+$user1-> sayHello();
+echo "\n";
+// $user2= new tolero('Bambo', 3, 56); 
+// echo "\n";
+// $user2-> sayHello();
+// Instansiating an ARRAY object
+$usersname1= array ('Adelola','Adeloere','andde','wkdf','sndmwk','dkfl');
+$userage1= array(23,25,28,56,36,24);
+
+$user2= new tolero($usersname1, $userage1);
+//echo $user1->age + 56;
+$user2-> sayHello();
+echo "\n\n\n\n\n";
+// $user2= new tolero('Bam
+
+
+/*Axis Modifiers(Eg. PUBLIC/PRIVATE/PROTECTED), GETTERS & SETTERS*/
+// Modifiers
+Class User1{
+    private $name;
+    private $age;
+
+
+    public function __construct($name,$age)
+    {
+     $this->name=$name;
+     $this->age=$age;   
+    }
+
+    // //since private class can't be accessed from outside its define class, a getter and setter(which are public methods) is assigned in the class to give access to the property of the class
+
+    // public function getName(){//Manual GETTER
+    //     return $this->name;
+    // }
+    // public function getAge(){ //Manual GETTER
+    //     return $this->age;
+    
+    //   }
+
+    // public function setName($name){ //Manual SETTERS
+    //     $this->name=$name;
+    // }
+    // public function setAge($age){ //ManualSETTERS
+    //     $this->age=$age;
+    // }
+
+    //USING THE MAGIC METHOD __get and __set instead of having to set individual getter and setter for each method
+
+    public function __get($property){ // Magic Method __get
+        if(property_exists($this, $property)){
+            return $this->$property;
+        }
+    }
+
+    public function __set($property, $value){// Magic Method __set
+        if(property_exists($this, $property)){
+        $this->$property =$value;
+    }
+    return $this;
+}
+}
+
+$username = new user1('SMart', 23); 
+
+// $username->setName('Olalola');
+//  echo $username->getName()."\n\n\n";
+//  $username->setAge(20);
+//  echo $username->getAge()."\n\n\n";
+$username->__set('age', 90);
+echo $username->__get('age');
