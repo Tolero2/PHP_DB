@@ -13,27 +13,24 @@
         <tr>
             <th> LAST NAME FIRST NAME</th>
             <th> Email</th>
+            <th></th>
 
         </tr>
     </thead>
     <tbody>
-        <?php foreach($model as $records)://{
-    //       echo "<tr>
-    //     <td>" .$records['lastName']."</td>
-    //     <td>".$records['firstName']."</td>
-    //    </tr>";
-    //     endforeach;
+        <?php foreach($model as $records):
        ?>
        <tr>
-        <!-- <td><!?= $records['LAST NAME']," ", $records['FIRST NAME']; ?></td> -->
         <td>
         <a href="Edit.php?recId=<?=$records["id"]?>">
             <?= $records['LAST NAME'];?>,<?= $records['FIRST NAME']; ?>
+            
         </a>
     </td>
 
         <td><?= $records['email']; ?></td>
-        
+        <td><a href="delete.php?recId=<?= $records["id"]?>" class="btn btn-danger">DELETE</a>
+        </td>
        </tr>
          <?php endforeach; ?>  
 

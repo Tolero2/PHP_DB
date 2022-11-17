@@ -11,7 +11,7 @@ if (strlen($email) === 0){
     $email= NULL;
     
 }
-require ('AddressBook.DB.php'); // the file with the MYSQL AddressBook DB connection query
+require ('addressbookEdit_DB.php'); // the file with the MYSQL AddressBook DB connection query
 sql($pdo,$firstName,$lastName ,$email);
 // foreach($filters as $key=>$name){
 //     echo (filter_id($name) ."    ".$name."\n");
