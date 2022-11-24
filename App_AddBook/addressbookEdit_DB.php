@@ -40,19 +40,19 @@ return $this->pdo= ($pdo);
 
 }
 
-function addSql($firstName,$lastName ,$email){// Function for inputing intial Data in the DB
+function addSql(){// Function for inputing intial Data in the DB
     $this->connector ();
     $sql_add= ' INSERT INTO People(`firstName`,`lastName`,`email`) VALUES (:fName, :lName, :eName);';
-    $stmt= $this->pdo->prepare($sql_add);
+    $this->stmt= $this->pdo->prepare($sql_add);
     $this->stmt->execute([
-        ':fName'=> $firstName ,
-        ':lName'=> $lastName,
-        ":eName"=> $email
+        ':fName'=> $this->firstName ,
+        ':lName'=> $this->lastName,
+        ":eName"=> $this->email
     ]);
     
     $this->pdo= null;
     $this->stmt = null;
-    
+
     
     }
 
@@ -67,6 +67,7 @@ function addSql($firstName,$lastName ,$email){// Function for inputing intial Da
          $this->pdo= null;
          $this->stmt=null;
          return $this->model;
+        
 
       
     }
@@ -85,7 +86,22 @@ function addSql($firstName,$lastName ,$email){// Function for inputing intial Da
         ]);
         $this->pdo= null;
         $this->stmt = null;
+    
 }
+
+public function delSql(){
+    $this->connector ();
+
+    $sql_delete= ('DELETE FROM `People` WHERE `idPeople` = :id ');
+    $this->stmt = $this->pdo -> prepare($sql_delete);
+    $this->stmt->execute(
+        [':id' => $this->id]
+    );
+    $this->pdo= null;
+    $this->stmt= null;
+
+}
+
 }
     
 

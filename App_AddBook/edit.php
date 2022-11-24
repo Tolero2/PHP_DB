@@ -24,7 +24,7 @@ if($model == null):
                     name="first-name" 
                     class="form-control
                     "
-                    value='<?=$model["FIRST NAME"] ?>'>
+                    value='<?= $model["FIRST NAME"] ?>'>
             </div>
             <div class="form-group">
                 <label for="last-name">Last Name</label>

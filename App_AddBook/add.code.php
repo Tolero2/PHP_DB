@@ -11,8 +11,11 @@ if (strlen($email) === 0){
     $email= NULL;
     
 }
-require ('addressbookEdit_DB.php'); // the file with the MYSQL AddressBook DB connection query
-sql($pdo,$firstName,$lastName ,$email);
+require ('./addressbookEdit_DB.php'); // the file with the MYSQL AddressBook DB connection query
+// the addSql method from class SQL under Addressbook_DB.php
+
+$sql= new sql('',$firstName,$lastName ,$email);
+$sql->addSql();
 // foreach($filters as $key=>$name){
 //     echo (filter_id($name) ."    ".$name."\n");
 // }

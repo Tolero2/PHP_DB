@@ -22,14 +22,16 @@
        ?>
        <tr>
         <td>
-        <a href="Edit.php?recId=<?=$records["id"]?>">
+            <a href="edit.php?recId=<?=$records["id"]?>">
             <?= $records['LAST NAME'];?>,<?= $records['FIRST NAME']; ?>
             
-        </a>
-    </td>
+            </a>
+        </td>
 
-        <td><?= $records['email']; ?></td>
-        <td><a href="delete.php?recId=<?= $records["id"]?>" class="btn btn-danger">DELETE</a>
+        <td><?= $records['email']; ?>
+        </td>
+        <td>
+                <a href="delete.php?recId=<?= $records["id"]?>" class="btn btn-danger">DELETE</a>
         </td>
        </tr>
          <?php endforeach; ?>  
