@@ -1,0 +1,11 @@
+-- Schema to support the Contact form App
+
+CREATE SCHEMA AddressBook;
+ use AddressBook;
+CREATE TABLE People (
+  idPeople INT AUTO_INCREMENT PRIMARY KEY,
+  firstName CHAR(50) NOT NULL,
+  lastName CHAR(50) NOT NULL,
+  email CHAR(100) NULL
+);
+

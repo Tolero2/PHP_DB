@@ -31,7 +31,7 @@ function __construct($id,$firstName,$lastName ,$email) {
 }
 public function connector(){
     //Connecting to MYSQL Database. DB_Name: 'Address_Book.DB'
-$dsn = 'mysql:dbname=Address_Book;host=127.0.0.1';
+$dsn = 'mysql:dbname=AddressBook;host=127.0.0.1';
 $user = 'root';
 $password = 'MYSQLp@ssword';
 
@@ -42,7 +42,7 @@ return $this->pdo= ($pdo);
 
 function addSql(){// Function for inputing intial Data in the DB
     $this->connector ();
-    $sql_add= ' INSERT INTO People(`firstName`,`lastName`,`email`) VALUES (:fName, :lName, :eName);';
+    $sql_add= ' INSERT INTO people(`firstName`,`lastName`,`email`) VALUES (:fName, :lName, :eName);';
     $this->stmt= $this->pdo->prepare($sql_add);
     $this->stmt->execute([
         ':fName'=> $this->firstName ,

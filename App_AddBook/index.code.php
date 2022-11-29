@@ -1,7 +1,7 @@
 <?php
 //This file serves as a 
 //Connecting to MYSQL Database. DB_Name: 'Address_Book.DB'
-$dsn = 'mysql:dbname=Address_Book;host=127.0.0.1';
+$dsn = 'mysql:dbname=AddressBook;host=127.0.0.1';
 $user = 'root';
 $password = 'MYSQLp@ssword';
 
