@@ -1,5 +1,5 @@
 <?php
-require('addressbookEdit_DB.php');
+require('addressbook_dbClass.php');
 
 
 if($_SERVER['REQUEST_METHOD']=='GET')

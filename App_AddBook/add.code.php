@@ -1,4 +1,5 @@
 <?php
+require ('./addressbook_dbClass.php'); // the file with the MYSQL AddressBook DB connection query
 // if ($_SERVER['REQUEST_METHOD']=='GET'){
 //     return;
 // }
@@ -11,7 +12,6 @@ if (strlen($email) === 0){
     $email= NULL;
     
 }
-require ('./addressbookEdit_DB.php'); // the file with the MYSQL AddressBook DB connection query
 // the addSql method from class SQL under Addressbook_DB.php
 
 $sql= new sql('',$firstName,$lastName ,$email);

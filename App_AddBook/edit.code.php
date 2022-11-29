@@ -1,5 +1,5 @@
 <?php
-require('addressbookEdit_DB.php');
+require('addressbook_dbClass.php');
 
 
  //Use get request to query DB using the key id linked  to the record in qureied to the view(html)

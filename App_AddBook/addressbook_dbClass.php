@@ -22,13 +22,13 @@ class sql {
 
      /**
      */
-    function __construct($id,$firstName,$lastName ,$email) { 
+function __construct($id,$firstName,$lastName ,$email) { 
     
         $this->id=$id;
         $this->firstName=$firstName;
         $this->lastName=$lastName;
         $this->email=$email;
-    }
+}
 public function connector(){
     //Connecting to MYSQL Database. DB_Name: 'Address_Book.DB'
 $dsn = 'mysql:dbname=Address_Book;host=127.0.0.1';
@@ -54,9 +54,9 @@ function addSql(){// Function for inputing intial Data in the DB
     $this->stmt = null;
 
     
-    }
+}
 
-    public function getSql(){ // function for updating the database
+public function getSql(){ // function for updating the database
         $this->connector ();
         $sqlGet= ('SELECT `idPeople` AS `id`,`firstName` as `FIRST NAME`, `lastName` as `LAST NAME` , `email` FROM `People` WHERE `idPeople` = :id;');
         $this->stmt= $this->pdo->prepare($sqlGet);
@@ -70,9 +70,9 @@ function addSql(){// Function for inputing intial Data in the DB
         
 
       
-    }
+}
 
-    public function editSql(){ // function for updating the records in the database by key(id)
+public function editSql(){ // function for updating the records in the database by key(id)
         $this->connector ();
         $sqlEdit= ' UPDATE `Address_Book`.`People`
         SET `firstName` = :fName,`lastName`= :lName,`email` = :eName
