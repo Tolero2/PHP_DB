@@ -24,10 +24,10 @@ else{ // else, if it is a post request ie, the data is sent to the database to u
     $lastName = filter_input(INPUT_POST, htmlspecialchars('last-name'));
     $email = filter_input(INPUT_POST, htmlspecialchars('email'));
 
-if (strlen($email) === 0){ //sets email value to null in DB if no email is inputed 
-    $email= NULL;
+// if (strlen($email) === 0){ //sets email value to null in DB if no email is inputed 
+//     $email= NULL;
     
-}
+// }
 
 $sqlclass= new sql($idPost,$firstName,$lastName ,$email);
 $sqlclass->editSql();

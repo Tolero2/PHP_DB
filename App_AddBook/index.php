@@ -8,6 +8,7 @@
     <title>Name Record List</title>
 </head>
 <body>
+    <a href="./add.php" class="btn btn-primary">Add Contact</a>
    <table class="table">
     <thead>
         <tr>
