@@ -38,7 +38,7 @@
         <form method="post" action="./delete.code.php" >
         <pre><p>
         <input type="hidden" name="personId" value="<?= $model['id']?>">
-        <button name="del" type="submit" value="yesDel" class="btn btn-danger" >YES</button>      <button name="Del" type="submit" value="noDel" class="btn btn-primary">NO</button></p></pre>
+        <button name="del" type="submit" value="yesDel" class="btn btn-danger" >YES</button>      <button name="del" type="submit" value="noDel" class="btn btn-primary">NO</button></p></pre>
         </form>
         <?php endif; ?>
     </body>

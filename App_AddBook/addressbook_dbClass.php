@@ -13,7 +13,7 @@
 class sql {
 
     public $pdo;
-    public $model;
+    public static $model;
     protected $stmt;
     protected $id;
     protected $firstName;
@@ -29,79 +29,93 @@ function __construct($id,$firstName,$lastName ,$email) {
         $this->lastName=$lastName;
         $this->email=$email;
 }
-public function connector(){
+public static function connector(){ //USING STATIC FUNCTION FOR DIRECT CALLING ON OTHER METHODS
     //Connecting to MYSQL Database. DB_Name: 'Address_Book.DB'
 $dsn = 'mysql:dbname=Address_Book;host=127.0.0.1';
 $user = 'root';
 $password = 'MYSQLp@ssword';
 
 $pdo = new PDO($dsn, $user, $password);
-return $this->pdo= ($pdo);
+return $pdo;
 
 }
 
 function addSql(){// Function for inputing intial Data in the DB
-    $this->connector ();
+    $pdo=self::connector ();
     $sql_add= ' INSERT INTO people(`firstName`,`lastName`,`email`) VALUES (:fName, :lName, :eName);';
-    $this->stmt= $this->pdo->prepare($sql_add);
+    $this->stmt= $pdo->prepare($sql_add);
     $this->stmt->execute([
         ':fName'=> $this->firstName ,
         ':lName'=> $this->lastName,
         ":eName"=> $this->email
     ]);
     
-    $this->pdo= null;
+    $pdo=null;
     $this->stmt = null;
 
     
 }
 
 public function getSql(){ // function for updating the database
-        $this->connector ();
+    $pdo=self::connector ();
         $sqlGet= ('SELECT `idPeople` AS `id`,`firstName` as `FIRST NAME`, `lastName` as `LAST NAME` , `email` FROM `People` WHERE `idPeople` = :id;');
-        $this->stmt= $this->pdo->prepare($sqlGet);
+        $this->stmt= $pdo->prepare($sqlGet);
         $this->stmt->execute([
             ':id'=> $this->id
         ]);
-         $this->model = ($this->stmt)->fetch();
-         $this->pdo= null;
+         $model = ($this->stmt)->fetch();
+         $pdo= null;
          $this->stmt=null;
-         return $this->model;
+         return $model;
         
 
       
 }
 
 public function editSql(){ // function for updating the records in the database by key(id)
-        $this->connector ();
+    $pdo=self::connector ();
         $sqlEdit= ' UPDATE `Address_Book`.`People`
         SET `firstName` = :fName,`lastName`= :lName,`email` = :eName
         WHERE `idPeople`= :id;';
-        $this->stmt= $this->pdo->prepare($sqlEdit);
+        $this->stmt= $pdo->prepare($sqlEdit);
         $this->stmt->execute([
             ':fName'=> $this->firstName,
             ':lName'=> $this->lastName,
             ":eName"=> $this->email,
             ':id'=> $this->id
         ]);
-        $this->pdo= null;
+        $pdo= null;
         $this->stmt = null;
     
 }
 
 public function delSql(){
-    $this->connector ();
+    $pdo=self::connector ();
 
     $sql_delete= ('DELETE FROM `People` WHERE `idPeople` = :id ');
-    $this->stmt = $this->pdo -> prepare($sql_delete);
+    $this->stmt = $pdo -> prepare($sql_delete);
     $this->stmt->execute(
         [':id' => $this->id]
     );
-    $this->pdo= null;
+    $pdo= null;
     $this->stmt= null;
 
 }
 
+Public function _fetchAll(){
+    $pdo=self::connector ();
+   
+  $sql=  ('SELECT `idPeople` AS `id`,`firstName` as `FIRST NAME`, `lastName` as `LAST NAME` , `email` FROM `People` ORDER BY `lastName`');
+    $this->stmt = $pdo->query($sql);
+    // $sql= $this->pdo->query('SELECT `idPeople` AS `id`,`firstName` as `FIRST NAME`, `lastName` as `LAST NAME` , `email` FROM `People` ORDER BY `lastName`');
+$model= $this->stmt->fetchAll(); // fetches all the query data and store them in Array of array set of values under model of the MVC
+
+
+// this is for optimization of query engine to break the connection from  the server
+$pdo=null;
+$this->stmt=null;
+ return $model;
+}
 }
     
 

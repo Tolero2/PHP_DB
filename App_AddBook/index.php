@@ -1,4 +1,5 @@
-<?php require 'index.code.php'?>
+<?php require 'index.code.php';
+         ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +20,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php foreach($model as $records):
+        <?php foreach($model as $records): 
        ?>
        <tr>
         <td>
